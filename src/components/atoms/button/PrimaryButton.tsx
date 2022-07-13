@@ -3,11 +3,13 @@ import { Button } from "@chakra-ui/react";
 
 type Props = {
   children: ReactNode;
+  disabled?: boolean;
+  loading?: boolean;
   onClick: () => void;
 };
 
 export const PrimaryButton: FC<Props> = memo((props) => {
-  const { children, onClick } = props;
+  const { children, disabled = false, loading = false, onClick } = props;
 
   return (
     <Button
@@ -15,6 +17,8 @@ export const PrimaryButton: FC<Props> = memo((props) => {
       color="white"
       _hover={{ opacity: 0.6 }}
       onClick={onClick}
+      disabled={disabled || loading}
+      isLoading={loading}
     >
       {children}
     </Button>
